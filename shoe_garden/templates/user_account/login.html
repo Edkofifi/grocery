@@ -1,0 +1,68 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load static %}
+
+<main class="main-content">
+    <!--== Start My Account Area Wrapper ==-->
+    <section class="account-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 m-auto">
+                    <div class="section-title text-center">
+                        <h2 class="title">Login</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="login-form-content">
+                        <form action="loginUser" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="username">Username <span
+                                                class="required">*</span></label>
+                                        <input name="username" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="password">Password <span class="required">*</span></label>
+                                        <input name="password" class="form-control" type="password" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group account-info-group mb--0">
+                                        <div class="rememberme-account">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                    id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <a class="new_user" href="#">Lost your password?</a>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <!-- <a class="btn-login" href="account.html">Login</a> -->
+                                        <input type="submit" class="btn-login" value = "Login">
+                                    </div>
+                                </div>
+                                <div class="col-12 not_user text-center ">
+                                    <p class="text-left">Don't have an account ? <a href="{% url 'registerUser' %}">register now</a>
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== End My Account Area Wrapper ==-->
+</main>
+
+{% endblock content %}

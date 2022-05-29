@@ -1,0 +1,97 @@
+{% extends "base/base.html" %} {% block content %} {% load static %}
+
+<main class="main-content">
+  <!--== Start Shopping Compare Area Wrapper ==-->
+  {% if compare %}
+  <section class="shopping-compare-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="shopping-compare-form table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th class="fz-13">Product Info</th>
+                  {% for item in compare %}
+                  <td>
+                    <div class="product-remove">
+                      <a href="{% url 'remove_comp_item' item.id %}"
+                        ><i class="fa fa-times"></i>Remove</a
+                      >
+                    </div>
+                    <div class="product-thumb">
+                      <a href="{% url 'item_detail' item.product.pk %}">
+                        <img
+                          src="{{item.product.image.url}}"
+                          width="90"
+                          height="110"
+                          alt="Image-HasTech"
+                        />
+                      </a>
+                    </div>
+                    <div class="product-name">
+                      <h4 class="title">
+                        <a href="#">{{item.product.name |truncatewords:5}}</a>
+                      </h4>
+                    </div>
+                    <a href="{% url 'cart_add' item.product.id %}" class="btn-cart">Add to cart</a>
+                  </td>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  <th>Price</th>
+                  {% for item in compare %}
+                  <td class="price">GH₵{{item.product.price}}</td>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  <th>Description</th>
+                  {% for item in compare %}
+                  <td class="product-desc ml-15 mr-15">
+                    {{item.product.description}}
+                  </td>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  <th>Availability</th>
+                  {% for item in compare %}
+                  <td>
+                    <span class="product-stock"
+                      >{{item.product.item_status}}</span
+                    >
+                  </td>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  <th>Weight</th>
+                  {% for item in compare %}
+                  <td class="product-weight">N/A</td>
+                  {% endfor %}
+                </tr>
+                <tr>
+                  <th>Dimensions</th>
+                  {% for item in compare %}
+                  <td class="product-dimensions">N/A</td>
+                  {% endfor %}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% else %}
+
+  <div class="text-center py-5 shopping-cart-form">
+    <h3 class="mb-3">There are No items to compare</h3>
+    <a href="{% url 'homepage' %}"
+      ><i class="fas fa-long-arrow-alt-left mr-2"> </i>Go to Homepage</a
+    >
+  </div>
+
+  {% endif %}
+  <!--== End Shopping Compare Area Wrapper ==-->
+</main>
+
+{% endblock content %}

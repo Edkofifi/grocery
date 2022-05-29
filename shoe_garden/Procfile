@@ -1,0 +1,2 @@
+release: python manage.py migrate
+web: gunicorn shoe_garden.wsgi --log-file -

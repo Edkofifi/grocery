@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load static %}
+<main class="main-content">
+    <section class="text-center">
+        <div class="container pt-2">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8">
+                    <div class="inner_complated">
+                        <div class="my-5"><img src="{% static 'assets/img/icons/cmpted_logo.png' %}" alt=""></div>
+                        <p class="">Thank you for ordering in our store. You will receive a confirmation
+                            email shortly.</p>
+                        <div class="mt-2 mb-5">
+                            <a href="" class="btn-theme btn-flat rounded-pill py-2 px-5" title="Go To Shop">Continue Shopping </a>
+                        </div>
+                    </div>
+                    <div class="main_quickorder text-align-center">
+                        <h3 class="title">Call Us for Quick Order</h3>
+                        <div class="cntct typewriter-effect"><span class="call_desk"><a href="tel:+233276490600"
+                                    id="typewriter_num">0276490600</a></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+{% endblock%}

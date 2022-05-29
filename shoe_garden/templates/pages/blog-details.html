@@ -1,0 +1,139 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load static  %}
+<main class="main-content">
+    <!--== Start Blog Area Wrapper ==-->
+    <section class="blog-details-area">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-xl-8" data-aos="fade-right">
+                    <div class="blog-details-content-wrap">
+                        <div class="blog-details-item">
+                            <div>
+                                <div class="blog-details-thumb">
+                                    <img src="{{blog_detail.blog_image.url}}" width="750" height="459" alt="Image-HasTech">
+                                </div>
+                                <div class="blog-meta-post">
+                                    <ul>
+                                        <li class="post-date"><i class="fa fa-calendar"></i><a href="{% url 'blog' %}">{{blog_detail.published_date}}</a></li>
+                                        <li class="author-info"><i class="fa fa-user"></i><a href="{% url 'blog' %}">{{blog_detail.author}}</a></li>
+                                    </ul>
+                                </div>
+                                <h3 class="main-title">{{blog_detail.blog_title}}</h3>
+                                <div class="details-wrapper details-wrapper-style1" data-margin-bottom="38">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eto dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcol laboris nisi ut aliquipp
+                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit inloifk voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaec cupidatat non proident, sunt in culpa qui officia deserunt
+                                        mollit anim id est laborum.</p>
+                                    <blockquote>
+                                        <div class="inner-content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisici elit sed do eiusmod tempor incididunt ut</p>
+                                            <span class="user-name">Rachel Leonard</span>
+                                            <img class="inner-shape" src="{% static 'assets/img/icons/quote2.webp' %}" width="82" height="59" alt="Image-HasTech">
+                                        </div>
+                                    </blockquote>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eto dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcol laboris nisi ut aliquipp
+                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit inloifk voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                </div>
+                                <div class="details-wrapper details-wrapper-style2">
+                                    <p><img class="p-image-right" src="{% static 'assets/img/blog/details2.webp' %}" width="370" height="400" alt="Image-HasTech"><span>Lorem ipsum dolor sit amet, consec adipisic elit, sed do eius tempor incididu ut labore et dolore ma aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nil ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptat velit esse cillum dolore</span></p>
+                                    <p class="mb-25"> leu fugiat nulla pariatur. Excepteur sintocca cupidatat non proident, sunt in culpa qui off deserunt mollit anim id est laborum. Sed utl perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore eto dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamcol laboris nisi ut aliquipp
+                                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit inloifk voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="blog-details-footer">
+                                <div class="tage-list">
+                                    <span>Tages:</span>
+                                    <a href="{% url 'blog' %}">Mobile</a>,
+                                    <a href="{% url 'blog' %}">Laptop</a>,
+                                    <a href="{% url 'blog' %}">Smart</a>,
+                                    <a href="{% url 'blog' %}">TV</a>
+                                </div>
+                                <div class="social-icons">
+                                    <span>Share:</span>
+                                    <a href="#/"><i class="fa fa-facebook"></i></a>
+                                    <a href="#/"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#/"><i class="fa fa-pinterest-p"></i></a>
+                                    <a href="#/"><i class="fa fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--== Start Comment Item ==-->
+                        <div class="comment-form-area">
+                            <h4 class="title-main">Leave a Comments</h4>
+                            <div class="comment-form-content">
+                                <form action="#">
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Name *">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="email" placeholder="Email *">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" placeholder="Subject (Optinal)">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb--0">
+                                                <textarea class="form-control" placeholder="Message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group mb--0">
+                                                <button type="submit" class="btn-theme">Send a Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!--== End Comment Item ==-->
+                    </div>
+                </div>
+                <div class="col-xl-4" data-aos="fade-left">
+                    <div class="blog-sidebar">
+                        <div class="blog-sidebar-search">
+                            <div class="sidebar-search-form">
+                                <form action="#">
+                                    <input type="search" placeholder="Search">
+                                    <button><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="blog-sidebar-wrap">
+                            <div class="blog-sidebar-post">
+                                <h4 class="sidebar-title">Recent Post</h4>
+                                <div class="sidebar-post">
+                                    {% for blog in recent_blogs %}
+                                    <div class="single-post">
+                                        <div class="post-thumb">
+                                            <a href="#"><img src="{{blog.blog_image.url}}" width="98" height="101" alt=""></a>
+                                        </div>
+                                        <div class="post-content">
+                                            <span class="date"><a href="{% url 'blog' %}"><i class="fa fa-calendar"></i>{{blog.published_date}}</a></span>
+                                            <h6 class="title"><a href="#">{{blog.blog_title}}</a></h6>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+</main>
+
+{% endblock content %}
