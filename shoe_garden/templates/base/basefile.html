@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Basefile</title>
+    
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style_basefile.css' %}" media="screen" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <!--Top menu -->
+            <div class="sidebar">
+               <!--profile image & text-->
+                <div class="profile">
+                    <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture">
+                    <h3>Anamika Roy</h3>
+                    <p>Shop Manager</p>
+                </div>
+                <!--menu item-->
+                <div>
+                    <ul>
+                        <li>
+                            <a href="#" class="active">
+                                <span class="icon"><i class="fas fa-home"></i></span>
+                                <span class="item">Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'orders' %}">
+                                <span class="icon"><i class="fas fa-desktop"></i></span>
+                                <span class="item">Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-user-friends"></i></span>
+                                <span class="item">Categories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'product_list' %}">
+                                <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="item">Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-database"></i></span>
+                                <span class="item">Payments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'statistics' %}">
+                                <span class="icon"><i class="fas fa-chart-line"></i></span>
+                                <span class="item">Statistics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-user-shield"></i></span>
+                                <span class="item">Coupons</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="icon"><i class="fas fa-cog"></i></span>
+                                <span class="item">Report</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="section">
+                <div class="top_navbar">
+                    <div class="hamburger">
+                        <a href="#">
+                            <i class="fas fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+                {% block content %}
+
+                {% endblock %}
+            </div>
+            
+        </div>
+    </body>
+    
+</html>

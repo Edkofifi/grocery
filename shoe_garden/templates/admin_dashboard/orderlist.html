@@ -1,0 +1,80 @@
+
+
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+ <html>
+     <head>
+        <title>Orders</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style_orderlist.css' %}" media="screen" />
+     </head>
+     <body>
+        <div class="row">
+            <h2>Orders</h2>
+        </div>
+        <div class="row">
+            <div><span>Pending(Total Pending)</span> <span class="space">Processing(Total Processing)</span> <span class="space">Confirmed(Total Confirmed)</span> <span class="space">Shipped(Total Shipped)</span> <span class="space">Completed(Total Completed)</span></div>
+        </div>
+        <div class="row">
+            <div>
+                <select class="select">
+                    <option >Bulk Add</option>
+                    <option >Delete</option>>
+                </select>
+                <button class="button1">Apply</button>
+                <select class="select">
+                    <option>Categories</option>
+                </select>
+                <select class="select">
+                    <option>Filter by Product type</option>
+                </select>
+                <select class="select">
+                    <option>Filter by Stock Status</option>
+                </select>
+                <button class="button1">Filter</button>
+            </div>
+        </div>
+        
+        <table>
+            <tr>
+              <th>User</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Country</th>
+              <th>Region</th>
+              <th>Town</th>
+              <th>Address1</th>
+              <th>Address2</th>
+              <th>GPS location</th>
+            </tr>
+            <tr>
+              <td><input type="checkbox">#</td>
+              <td>Eddy</td>
+              <td>Teye</td>
+              <td>Ghana</td>
+              <td>Accra</td>
+              <td>hatso</td>
+              <td>Nii Street</td>
+              <td>#</td>
+              <td>#</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox">#</td>
+              <td>Alex</td>
+              <td>Ato</td>
+              <td>Ghana</td>
+              <td>Accra</td>
+              <td>Legon</td>
+              <td>Leman Street</td>
+              <td>#</td>
+              <td>#</td>
+            </tr>
+        </table>
+          
+     </body>
+ </html>
+
+ {% endblock content %}

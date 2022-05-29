@@ -1,0 +1,207 @@
+
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Statistics</title>
+
+        <meta charset="utf-8">
+        <meta name="Statistics" content="width=device-width, initial-scale=1">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="{% static 'assets/css/style_statistics_dashboard.css' %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="{% static 'assets/js/chart.js' %}"></script>
+       
+    </head>
+    <body>
+        <div class="containerCover">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card bg-primary" style="width: 19rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Revenue</h5>
+                                        <h6 class="card-subtitle mb-2 text-white">GHC 200</h6>
+                                    </div>
+                                    <div class="col">
+                                        <i class="fa fa-dollar" style="font-size:100px"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col">
+                        <div class="card bg-warning" style="width: 19rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Products</h5>
+                                        <h6 class="card-subtitle mb-2 text-white">1102</h6>
+                                    </div>
+                                    <div class="col">
+                                        <i class="fa fa-google-wallet" style="font-size:100px"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col">
+                        <div class="card" style="width: 19rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Orders</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">300</h6>
+                                    </div>
+                                    <div class="col">  
+                                        <i class="fa fa-bar-chart" style="font-size:100px"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card bg-success" style="width: 19rem;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Completed Orders</h5>
+                                        <h6 class="card-subtitle mb-2 text-white">250</h6>
+                                    </div>
+                                    <div class="col">
+                                        <i class="fa fa-line-chart" style="font-size:100px"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subcontainer">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card" style="width: 49rem;">
+                                <div class="card-body" >
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <h5 class="card-title">Product Metrix</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div>
+                                                <ul class="nav nav-pills nav-pills-custom justify-content-md-end" id="pills-tab-custom"
+                                                role="tablist">
+                                                <li class="nav-item">
+                                                  <a class="nav-link active" id="pills-home-tab-custom" data-toggle="pill"
+                                                    href="#pills-health" role="tab" aria-controls="pills-home" aria-selected="true">
+                                                    Month
+                                                  </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" id="pills-profile-tab-custom" data-toggle="pill" href="#pills-career"
+                                                    role="tab" aria-controls="pills-profile" aria-selected="false">
+                                                    Year
+                                                  </a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <canvas id="productmetrix" style="width:100%;max-width:800px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card" style="height: 440px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Top products</h5>
+                                        <div class="tablespace">
+                                            <table class="table">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">OrderID</th>
+                                                    <th scope="col">First Name</th>
+                                                    <th scope="col">Last Name</th>
+                                                    <th scope="col">Country</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Edmond</td>
+                                                    <td>Teye</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <!--Script-->
+          <script src="{% static 'assets/js/chart.js' %}"></script>
+    </body>
+</html>
+
+
+{% endblock content %}
