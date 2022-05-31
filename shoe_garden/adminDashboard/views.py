@@ -1,9 +1,10 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from adminDashboard.form import ProductForm
+from adminDashboard import models
+from adminDashboard.form import ProductForm, UpdateItem
 
-from new_shop.models import Item
+from new_shop.models import Category, Item, Order
 
 def admin_login(request):
     if request.method == 'POST':
@@ -53,14 +54,14 @@ def create_user(request):
     return render(request, 'dashboard/back-end/create-user.html')
 
 
-def category_main(request):
-    return render(request, 'dashboard/back-end/main-category.html')
+# def category_main(request):
+#     return render(request, 'dashboard/back-end/main-category.html')
 
 def category_sub(request):
     return render(request, 'dashboard/back-end/sub-category.html')
 
 
-def product_list(request):
+def product_list(request, id=None):
     products = Item.objects.all()
 
     context={'products': products }
@@ -73,7 +74,7 @@ def product_add(request, id=0):
         if id == 0:
             form = ProductForm()
         else:
-            product = Item.objects.get(pk =id)
+            product = Item.objects.get(pk=id)
             form = ProductForm(instance = product)
         return render(request, 'admin_dashboard/add_product.html', {'form':form})
     else:
@@ -81,17 +82,39 @@ def product_add(request, id=0):
             form = ProductForm(request.POST, request.FILES)
         else:
             product = Item.objects.get(pk=id)
-            form = ProductForm(request.POST, product, request.FILES)
+            form = ProductForm(request.POST, request.FILES, instance =product)
         if form.is_valid():
             form.save()
         return redirect('product_list')
+
+def delete_product(request, id):
+    product = Item.objects.get(pk =id)
+    product.delete()
+    return redirect('product_list')
     
 
 def orders(request):
-    return render(request, 'admin_dashboard/orderlist.html')
+    orders = Order.objects.all()
+    context = {'orders': orders}
+    return render(request, 'admin_dashboard/orderlist.html', context)
 
-def invoice(request):
-    return render(request, 'dashboard/back-end/invoice.html')
+def update_order(request, id):
+    order = get_object_or_404(Order, pk = id)
+    if request.method == 'POST':
+        form = UpdateItem(request.POST, instance = order)
+        if form.is_valid():
+            form.save()
+            return redirect('orders')
+    # else:
+    #     form = 
+
+def categories(request):
+    categories = Category.objects.all()
+    
+  #  products = Item.objects.filter('categories')
+    print(categories)
+    context = {'categories': categories}
+    return render(request, 'admin_dashboard/category.html', context)
 
 
 def statistics(request):
@@ -99,3 +122,4 @@ def statistics(request):
 
 def reports(request):
     return render(request, 'dashboard/back-end/reports.html')
+

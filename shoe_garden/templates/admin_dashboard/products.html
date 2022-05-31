@@ -46,7 +46,9 @@
               <th>category</th>
               <th>Status</th>
               <th>Price</th>
+              <th>Discount Price</th>
               <th>Quantity in Stock</th>
+              <th>Actions</th>
             </tr>
             {% for product in products %}
             <tr>
@@ -55,7 +57,15 @@
               <td>{{product.category}} </td>
               <td>{{product.item_Status}}</td>
               <td>{{product.price}}</td>
-              <th>6</th>
+              <td>{{product.discount_price}}</td>
+              <th>{{product.quantity_available}}</th>
+              <td>
+                  <a href="{% url 'update_product' product.id %}" > edit </a>
+                  <form action="{% url 'delete_product' product.id %}" method="post">
+                      <button> delete </button>
+                    {% csrf_token %}
+                     </form> 
+              </td>
             </tr>
             {% endfor %}
         </table>

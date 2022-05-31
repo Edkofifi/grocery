@@ -46,15 +46,19 @@ class Category(models.Model):
     def __str__(self):
         return self.title
     
+    # def save(self, **kwargs):
+    #     slug = '%s' % (self.title)
+    #     unique_slugify(self, slug)
+    #     super(Category, self).save()
+    
 class Filter_price(models.Model):
     price_range_choice =[
-        ('0 TO 249', '0 TO 250'),
-        ('250 TO 349','250 TO 349'),
-        ('350 TO 499','350 TO 449'),
-        ('550 TO 599','450 TO 549'),
-        ('550 TO 999','550 TO 999'),
-        ('1000 TO 3999','1000 TO 3999'),
-        ('4000 TO 6000','4000 TO 6000'),
+        ('0 TO 10', '0 TO 10'),
+        ('11 TO 20', '11 TO 20'),
+        ('21 TO 50', '21 TO 50'),
+        ('51 TO 100', '51 TO 100'),
+        ('101 TO Above', '101 TO Above'),
+        
     ]
     price_range = models.CharField(choices =price_range_choice, max_length= 25)
 
@@ -87,22 +91,22 @@ class Item(models.Model):
     ]
     stock_status = [
         ('In Stock', 'In Stock'),
-        ('Not Available', 'Not Available'),
-        ('Ready to Ship', 'Ready to Ship'),
-        ('Sold Out', 'Sold Out'),
-        ('Temporarily Out-of-Stock', 'Temporarily Out-of-Stock')
+        ('Out of Stock', 'Out of Stock'),
+      
     ]
+
     name = models.CharField(max_length=100, verbose_name='Item Name')    
-    image = models.ImageField(upload_to = 'site_images/item_img',verbose_name='Item Image')    
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.ImageField(upload_to = 'site_images',verbose_name='Item Image')    
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='item_category')
     description = models.TextField(verbose_name='Item Description')    
     display_in = models.CharField(choices=item_dispay_choices, max_length=50, null= True, verbose_name='Diplayed In')
     item_status = models.CharField(choices=stock_status, max_length=50, null= True, verbose_name='Item Status')
     has_discount = models.BooleanField(default = False, verbose_name='Has Discount')
     discount = models.IntegerField(blank=True, null=True, verbose_name='Discount')
-    price = models.FloatField(verbose_name='Price')
+    price = models.DecimalField(verbose_name='Price', decimal_places=2, max_digits=5)
     price_filter_range = models.ForeignKey(Filter_price, on_delete = models.SET_NULL, null= True)
     discount_price = models.FloatField(blank=True, null=True, verbose_name='Discount Price')
+    quantity_available = models.IntegerField(verbose_name='Quantity in Stock')
     
 
     # brand = models.CharField(max_length=50, verbose_name='Item Brand')
@@ -138,9 +142,9 @@ class ItemSecondaryImage(models.Model):
 
 class Order(models.Model):
     order_status=[
-        ('Pending','Pending'),
+        ('Created','Created'),
         ('Processing','Processing'),
-        ('Confirmed','Confirmed'),
+        ('Cancelled','Cancelled'),
         ('Shipped','Shipped'),
         ('Completed','Completed'),
     ]
@@ -155,7 +159,7 @@ class Order(models.Model):
     GPS = models.CharField(max_length = 100, null = True,)
     phone = models.CharField(max_length = 100,null = True,)
     email = models.EmailField(max_length = 100,null = True,)
-    amount = models.IntegerField(default=0)
+    amount = models.DecimalField(default=0, decimal_places=2, max_digits=6)
     order_note = models.CharField(max_length = 100, null = True,blank=True)
     ref = models.CharField(max_length =200, null = True,blank=True)
     verified = models.BooleanField(default = False)

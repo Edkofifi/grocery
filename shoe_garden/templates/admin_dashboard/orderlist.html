@@ -47,31 +47,28 @@
               <th>Region</th>
               <th>Town</th>
               <th>Address1</th>
-              <th>Address2</th>
-              <th>GPS location</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
+            {% for order in orders %}
             <tr>
-              <td><input type="checkbox">#</td>
-              <td>Eddy</td>
-              <td>Teye</td>
-              <td>Ghana</td>
-              <td>Accra</td>
-              <td>hatso</td>
-              <td>Nii Street</td>
-              <td>#</td>
-              <td>#</td>
+              {% comment %} <td><input type="checkbox">#</td> {% endcomment %}
+              <td>{{order.user}}</td>
+              <td>{{order.first_name}}</td>
+              <td>{{order.last_name}}</td>
+              <td>{{order.country}}</td>
+              <td>{{order.region}}</td>
+              <td>{{order.town}}</td>
+              <td>{{order.address1}}</td>
+              <td>{{order.amount}}</td>
+              <td>{{order.status}}</td>
+              <td>
+              <a href="{% url 'update_order' order.id %}"> edit </a>
+              </td>
             </tr>
-            <tr>
-              <td><input type="checkbox">#</td>
-              <td>Alex</td>
-              <td>Ato</td>
-              <td>Ghana</td>
-              <td>Accra</td>
-              <td>Legon</td>
-              <td>Leman Street</td>
-              <td>#</td>
-              <td>#</td>
-            </tr>
+            {% endfor %}
+            
         </table>
           
      </body>
