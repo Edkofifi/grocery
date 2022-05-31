@@ -7,7 +7,7 @@
      <head>
         <title>Product</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style_products_add_products.css' %}" media="screen" />
+        <link rel="stylesheet" href="{% static 'assets/css/style_products_add_product.css' %}">
      </head>
      <body>
         <div class="row">
@@ -43,25 +43,21 @@
         <table>
             <tr>
               <th>Name</th>
-              <th>Stock</th>
+              <th>category</th>
+              <th>Status</th>
               <th>Price</th>
-              <th>Categories</th>
-              <th>Tags</th>
+              <th>Quantity in Stock</th>
             </tr>
+            {% for product in products %}
             <tr>
-              <td><input type="checkbox">Avocado</td>
-              <td>Out Of Stock</td>
-              <td>20 GHC</td>
-              <td>Fruits</td>
-              <td>12#</td>
+              {% comment %} <td><input type="checkbox">Avocado</td> {% endcomment %}
+              <td>{{product.name}}</td>
+              <td>{{product.category}} </td>
+              <td>{{product.item_Status}}</td>
+              <td>{{product.price}}</td>
+              <th>6</th>
             </tr>
-            <tr>
-              <td><input type="checkbox">Mango</td>
-              <td>In stock</td>
-              <td>10 GHC</td>
-              <td>Fruits</td>
-              <td>15#</td>
-            </tr>
+            {% endfor %}
         </table>
           
      </body>

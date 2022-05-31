@@ -16,8 +16,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class ItemSecondaryImageAdmin(admin.TabularInline):
     model = ItemSecondaryImage
 class ItemsAdmin(admin.ModelAdmin):
-        list_display = ('name', 'brand', 'sizes_available', 'display_in', 'price', 'item_status')
-        list_filter = ('name', 'category', 'brand', 'display_in','item_status',)
+        list_display = ('name', 'display_in', 'price', 'item_status')
+        list_filter = ('name', 'category', 'display_in','item_status',)
         inlines = [ItemSecondaryImageAdmin,]
 
 class OrderItemTabularInline(admin.TabularInline):

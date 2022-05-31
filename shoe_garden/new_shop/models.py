@@ -24,11 +24,11 @@ class Brand(models.Model):
     name = models.CharField(verbose_name="Brand Name", max_length=30,blank=True, null=True)
     
     class Meta:
-        verbose_name_plural = 'Brands'
-        
+        verbose_name_plural = 'Brands'        
 
     def __str__(self):
         return self.name
+
 class Category(models.Model):
     title = models.CharField(max_length=50, verbose_name="Category Title")
     slug = models.SlugField(max_length=55, verbose_name="Category Slug")
@@ -92,14 +92,10 @@ class Item(models.Model):
         ('Sold Out', 'Sold Out'),
         ('Temporarily Out-of-Stock', 'Temporarily Out-of-Stock')
     ]
-    name = models.CharField(max_length=100, verbose_name='Item Name')
-    gender = models.CharField(choices=gender_choice, max_length=10, verbose_name='Gender')
-    image = models.ImageField(upload_to = 'site_images/item_img',verbose_name='Item Image')
-    # brand = models.CharField(max_length=50, verbose_name='Item Brand')
-    brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null = True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    description = models.TextField(verbose_name='Item Description')
-    sizes_available = models.CharField(choices=product_size_choice, max_length=50, verbose_name='Size Avaailable')
+    name = models.CharField(max_length=100, verbose_name='Item Name')    
+    image = models.ImageField(upload_to = 'site_images/item_img',verbose_name='Item Image')    
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
+    description = models.TextField(verbose_name='Item Description')    
     display_in = models.CharField(choices=item_dispay_choices, max_length=50, null= True, verbose_name='Diplayed In')
     item_status = models.CharField(choices=stock_status, max_length=50, null= True, verbose_name='Item Status')
     has_discount = models.BooleanField(default = False, verbose_name='Has Discount')
@@ -108,6 +104,13 @@ class Item(models.Model):
     price_filter_range = models.ForeignKey(Filter_price, on_delete = models.SET_NULL, null= True)
     discount_price = models.FloatField(blank=True, null=True, verbose_name='Discount Price')
     
+
+    # brand = models.CharField(max_length=50, verbose_name='Item Brand')
+    # brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null = True)
+    # gender = models.CharField(choices=gender_choice, max_length=10, verbose_name='Gender')
+    # sizes_available = models.CharField(choices=product_size_choice, max_length=50, verbose_name='Size Avaailable')
+
+
     def __str__(self):
         return self.name
     

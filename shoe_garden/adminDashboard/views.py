@@ -85,8 +85,7 @@ def product_add(request, id=0):
         if form.is_valid():
             form.save()
         return redirect('product_list')
-
-    return render(request, 'admin_dashboard/add_product.html', context )
+    
 
 def orders(request):
     return render(request, 'admin_dashboard/orderlist.html')
