@@ -22,6 +22,10 @@ urlpatterns = [
     path('coupon/add', views.create_coupon, name='create_coupon'),
     
     path('product/categories', views.categories, name='categories'),
+    path('categories/add', views.add_category, name='add-category'),
+    path('<int:id>', views.add_category, name='edit-category'),
+    path('delete/<int:id>', views.delete_category, name='delete-category'),
+
     path('category/sub', views.category_sub, name='category_sub'),
     
     path('product/add', views.product_add, name='product_add'), # get and post req. to add product

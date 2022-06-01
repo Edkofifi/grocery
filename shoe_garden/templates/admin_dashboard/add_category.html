@@ -1,0 +1,28 @@
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'assets/css/style_primary.css' %}">
+    </head>
+    <body>
+        <div class="container">
+        <div class="add-product">
+            <form method="POST" action="{% url 'add-category' %}" >
+                {% csrf_token %}
+
+                {{form.as_p}}
+            
+            <button>save</button>
+            </form>
+       
+        </div>
+    </body>
+</html>
+
+
+{% endblock content %}

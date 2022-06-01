@@ -16,10 +16,10 @@
     <body class="body">
        <div class="containerCover">
            <div class="row">
-               <h2>Category</h2>
+               <h2>Categories of Products in Store</h2>
                
            </div>
-        <div class="subcontainer_dashboard bg-light">
+        {% comment %} <div class="subcontainer_dashboard bg-light">
             <div class="vr bg-warning" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
         </div>
         <div class="bg-light">
@@ -27,11 +27,14 @@
         </div>
         <div>
             <p>Select your payment method, and Integrate it into the system</p>
-        </div>
+        </div> {% endcomment %}
            <div class="row">
-               <div class="text-blue"><span><button class="button1">Add New</button></span><span class="space">Pending(100)</span> <span class="space">Processing(200)</span> <span class="space">Confirmed(15)</span> <span class="space">Shipped(200)</span> <span class="space">Completed(20)</span></div>
+                <div class="text-blue">
+                    <a href="{% url 'add-category' %}" class="active">
+                        <button class="button1">Add New Category</button>
+                    </a>
            </div>
-           <div class="row">
+           {% comment %} <div class="row">
                <div>
                    <select class="select">
                        <option >Bulk Add</option>
@@ -49,7 +52,7 @@
                    </select>
                    <button class="button1">Filter</button>
                </div>
-           </div>
+           </div>  {% endcomment %}
            <div>
                <table class="table">
                    <thead class="bg-primary text-white">
@@ -59,6 +62,7 @@
                      <th scope="col">Description</th>
                      <th scope="col">Slug</th>
                      <th scope="col">Number of Products</th>
+                     <th scope="col">Actions</th>
 
                    </tr>
                    </thead>
@@ -70,6 +74,10 @@
                         <td>{{category.description}}</td>
                         <td>{{category.slug}}</td>
                         <td>{{category.item_category.count}}</td>
+                        <td>
+                            <a href="{% url 'delete-category' category.id %}">delete<a/>
+                            <a href="{% url 'edit-category' category.id %}">edit<a/>
+                        </td>
                        </tr>
                        {% endfor %}
 

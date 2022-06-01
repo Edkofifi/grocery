@@ -1,6 +1,6 @@
 from django import forms
 
-from new_shop.models import Item, Order 
+from new_shop.models import Category, Item, Order 
 
 
 class ProductForm(forms.ModelForm):
@@ -12,3 +12,9 @@ class UpdateItem(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['status']
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'

@@ -1,8 +1,10 @@
+
+
 from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from adminDashboard import models
-from adminDashboard.form import ProductForm, UpdateItem
+from adminDashboard.form import CategoryForm, ProductForm, UpdateItem
 
 from new_shop.models import Category, Item, Order
 
@@ -111,11 +113,33 @@ def update_order(request, id):
 def categories(request):
     categories = Category.objects.all()
     
-  #  products = Item.objects.filter('categories')
-    print(categories)
+  
     context = {'categories': categories}
     return render(request, 'admin_dashboard/category.html', context)
 
+
+def add_category(request, id=0):
+    if request.method == 'GET':
+        if id == 0:
+            form = CategoryForm()
+        else:
+            category = Category.objects.get(pk=id)
+            form = CategoryForm(instance = category)
+        return render(request, 'admin_dashboard/add_category.html', {'form':form})
+    else:
+        if id==0:
+            form = CategoryForm(request.POST)
+        else:
+            category = Category.objects.get(pk=id)
+            form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+        return redirect('categories')
+
+def delete_category(request, id):
+    category = Category.objects.get(pk =id)
+    category.delete()
+    return redirect('categories')
 
 def statistics(request):
     return render(request, 'admin_dashboard/statistics.html')
