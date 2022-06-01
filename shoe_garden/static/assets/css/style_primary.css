@@ -1,14 +1,6 @@
 body{
     background-color: aliceblue;
 }
-div{
-    margin-top: 10px;
-}
-.row {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
 .button {
 background-color: #4CAF50; /* Green */
 border: none;
@@ -24,23 +16,21 @@ margin-top: 20px;
 border-radius: 5%;
 }
 .button1 {
-    background-color: blue; /* Green */
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    height: 30px;
-    margin-left: 20px;
-    margin-top: 20px;
-    border-radius: 5%;
-    width: 100px;
-    }
-.space{
-    margin-left: 10px;
-}
+  background-color: blue; /* Green */
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  height: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius: 5%;
+  width: 100px;
+  }
+
 .select{
     height: 30px;
     width: 200px;
@@ -64,15 +54,12 @@ padding: 8px;
 }
 
 tr:nth-child(even) {
-background-color: #dddddd;
+background-color: #5992e2;
 }
+
 * {
     box-sizing: border-box;
   font-family: "Roboto", "Helvetica Neue", sans-serif;
-}
-
-.container {
-  display: flex;
 }
 
 .add-product,
@@ -183,3 +170,29 @@ background-color: #dddddd;
   background: transparent;
 }
 
+.containerCover{
+  margin: 40px;
+}
+.subcontainer{
+  margin-top: 100px;
+}
+.subcontainer_dashboard{
+  margin-top: 30px;
+}
+
+#area-chart,
+#line-chart,
+#bar-chart,
+#stacked,
+#pie-chart{
+min-height: 250px;
+}
+.leftAway{
+  margin-left: 40px;
+}
+.innercontainer{
+  margin-top: 20px;
+}
+.space{
+  margin-left: 7px;
+}

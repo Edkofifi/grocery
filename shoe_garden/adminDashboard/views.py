@@ -28,7 +28,7 @@ def admin_logout(request):
 
 
 def dashboard(request):
-    return render(request, 'base/basefile.html')
+    return render(request, 'admin_dashboard/dashboard.html')
 
 def profile(request):
     return render(request, 'dashboard/back-end/profile.html')
@@ -119,6 +119,11 @@ def categories(request):
 
 def statistics(request):
     return render(request, 'admin_dashboard/statistics.html')
+
+def payments(request):
+
+    context = {}
+    return render(request, 'admin_dashboard/payments.html', context)
 
 def reports(request):
     return render(request, 'dashboard/back-end/reports.html')

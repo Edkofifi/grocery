@@ -47,3 +47,112 @@ new Chart("regional_chat", {
     }
   }
 });
+
+var xValues = ["Total", "Instock", "Out-stock",];
+var yValues = [55, 49, 44,];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797"
+];
+
+new Chart("stocks", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  }
+});
+
+var xValues = ["Total", "Instock", "Out-stock",];
+var yValues = [55, 49, 44,];
+var barColors = [
+  "#b91d47",
+  "#00aba9",
+  "#2b5797"
+];
+
+new Chart("stocks_statistics", {
+  type: "doughnut",
+  data: {
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  }
+});
+
+var xValues = ["Total", "Instock", "Out-stock",];
+var yValues = [55, 49, 44,];
+var barColors = [
+  "red",
+  "blue",
+  "green"
+];
+
+new Chart("Orders", {
+  type: "doughnut",
+  data: {
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  }
+});
+
+var xValues = ["Total", "Instock", "Out-stock",];
+var yValues = [55, 49, 44,];
+var barColors = [
+  "red",
+  "blue",
+  "green"
+];
+
+new Chart("Completed", {
+  type: "pie",
+  data: {
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  }
+});
+
+var xValues = ["Total", "Instock", "Out-stock",];
+var yValues = [55, 49, 44,];
+var barColors = [
+  "red",
+  "blue",
+  "green"
+];
+
+new Chart("processing", {
+  type: "pie",
+  data: {
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  }
+});
+
+var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var yValues = [55, 49, 44, 24, 35];
+var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("visitors", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false}
+  }
+});

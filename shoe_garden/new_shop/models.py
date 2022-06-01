@@ -96,7 +96,7 @@ class Item(models.Model):
     ]
 
     name = models.CharField(max_length=100, verbose_name='Item Name')    
-    image = models.ImageField(upload_to = 'site_images',verbose_name='Item Image')    
+    image = models.ImageField(upload_to = 'site_images/',verbose_name='Item Image')    
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, related_name='item_category')
     description = models.TextField(verbose_name='Item Description')    
     display_in = models.CharField(choices=item_dispay_choices, max_length=50, null= True, verbose_name='Diplayed In')

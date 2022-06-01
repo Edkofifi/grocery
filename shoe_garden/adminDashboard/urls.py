@@ -25,12 +25,14 @@ urlpatterns = [
     path('category/sub', views.category_sub, name='category_sub'),
     
     path('product/add', views.product_add, name='product_add'), # get and post req. to add product
-    path('<int:id>/', views.product_list, name='update_product'), # get and post req. to update
+    path('<int:id>/', views.product_add, name='update_product'), # get and post req. to update
     path('product/list', views.product_list, name='product_list'),   # get request to retrieve and display all products
     path('delete/<int:id>/', views.delete_product, name='delete_product'),
     
     path('<int:id>/', views.update_order, name='update_order'),
     path('order/', views.orders, name='orders'),
+
+     path('payments/', views.payments, name='payments'),
     
     
     

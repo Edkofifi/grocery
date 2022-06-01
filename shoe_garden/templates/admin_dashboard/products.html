@@ -4,72 +4,78 @@
  
  <!DOCTYPE html>
  <html>
+
      <head>
         <title>Product</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'assets/css/style_products_add_product.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style_primary.css' %}">
      </head>
-     <body>
-        <div class="row">
 
-            <h2>Products</h2>
-            <a href="{% url 'product_add' %}" class="active">
-                <button class="button">Add Product</button>
-            </a>
-        </div>
-        <div class="row">
-            <div><span>All(Total Products)</span> <span class="space">Published(Total Published)</span></div>
-        </div>
-        <div class="row">
-            <div>
-                <select class="select">
-                    <option >Bulk Add</option>
-                    <option >Delete</option>>
-                </select>
-                <button class="button1">Apply</button>
-                <select class="select">
-                    <option>Categories</option>
-                </select>
-                <select class="select">
-                    <option>Filter by Product type</option>
-                </select>
-                <select class="select">
-                    <option>Filter by Stock Status</option>
-                </select>
-                <button class="button1">Filter</button>
+     <body>
+         <div class="containerCover">
+            <div class="row">
+
+                <h2>Products</h2>
             </div>
-        </div>
-        
-        <table>
-            <tr>
-              <th>Name</th>
-              <th>category</th>
-              <th>Status</th>
-              <th>Price</th>
-              <th>Discount Price</th>
-              <th>Quantity in Stock</th>
-              <th>Actions</th>
-            </tr>
-            {% for product in products %}
-            <tr>
-              {% comment %} <td><input type="checkbox">Avocado</td> {% endcomment %}
-              <td>{{product.name}}</td>
-              <td>{{product.category}} </td>
-              <td>{{product.item_Status}}</td>
-              <td>{{product.price}}</td>
-              <td>{{product.discount_price}}</td>
-              <th>{{product.quantity_available}}</th>
-              <td>
-                  <a href="{% url 'update_product' product.id %}" > edit </a>
-                  <form action="{% url 'delete_product' product.id %}" method="post">
-                      <button> delete </button>
-                    {% csrf_token %}
-                     </form> 
-              </td>
-            </tr>
-            {% endfor %}
-        </table>
-          
+            <div class="subcontainer_dashboard bg-light">
+                <div class="vr bg-warning" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
+            </div>
+            <div class="bg-light">
+                <div class="vr bg-primary" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
+            </div>
+            <div class="row">
+                <div><span><a href="{% url 'product_add' %}" class="active"><button class="button1">Add Product</button></a></span><span class="space">All(200)</span> <span class="space">Published(30)</span></div>
+            </div>
+            <div class="row">
+                <div>
+                    <select class="select">
+                        <option >Bulk Add</option>
+                        <option >Delete</option>>
+                    </select>
+                    <button class="button1">Apply</button>
+                    <select class="select">
+                        <option>Categories</option>
+                    </select>
+                    <select class="select">
+                        <option>Filter by Product type</option>
+                    </select>
+                    <select class="select">
+                        <option>Filter by Stock Status</option>
+                    </select>
+                    <button class="button1">Filter</button>
+                </div>
+            </div>
+            
+            <table>
+                <tr>
+                  <th>Name</th>
+                  <th>category</th>
+                  <th>Status</th>
+                  <th>Price</th>
+                  <th>Discount Price</th>
+                  <th>Quantity in Stock</th>
+                  <th>Actions</th>
+                </tr>
+                {% for product in products %}
+                <tr>
+                  {% comment %} <td><input type="checkbox">Avocado</td> {% endcomment %}
+                  <td>{{product.name}}</td>
+                  <td>{{product.category}} </td>
+                  <td>{{product.item_Status}}</td>
+                  <td>{{product.price}}</td>
+                  <td>{{product.discount_price}}</td>
+                  <th>{{product.quantity_available}}</th>
+                  <td>
+                      <a href="{% url 'update_product' product.id %}" > edit </a>
+                      <form action="{% url 'delete_product' product.id %}" method="post">
+                          <button> delete </button>
+                        {% csrf_token %}
+                         </form> 
+                  </td>
+                </tr>
+                {% endfor %}
+            </table>
+         </div>  
      </body>
  </html>
  {% endblock content %}

@@ -6,71 +6,78 @@
 
 <!DOCTYPE html>
  <html>
+
      <head>
         <title>Orders</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style_orderlist.css' %}" media="screen" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style_primary.css' %}" media="screen" />
      </head>
+
      <body>
-        <div class="row">
-            <h2>Orders</h2>
-        </div>
-        <div class="row">
-            <div><span>Pending(Total Pending)</span> <span class="space">Processing(Total Processing)</span> <span class="space">Confirmed(Total Confirmed)</span> <span class="space">Shipped(Total Shipped)</span> <span class="space">Completed(Total Completed)</span></div>
-        </div>
-        <div class="row">
-            <div>
-                <select class="select">
-                    <option >Bulk Add</option>
-                    <option >Delete</option>>
-                </select>
-                <button class="button1">Apply</button>
-                <select class="select">
-                    <option>Categories</option>
-                </select>
-                <select class="select">
-                    <option>Filter by Product type</option>
-                </select>
-                <select class="select">
-                    <option>Filter by Stock Status</option>
-                </select>
-                <button class="button1">Filter</button>
+        <div class="containerCover">
+            <div class="row">
+                <h2>Orders</h2>
             </div>
-        </div>
-        
-        <table>
-            <tr>
-              <th>User</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Country</th>
-              <th>Region</th>
-              <th>Town</th>
-              <th>Address1</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-            {% for order in orders %}
-            <tr>
-              {% comment %} <td><input type="checkbox">#</td> {% endcomment %}
-              <td>{{order.user}}</td>
-              <td>{{order.first_name}}</td>
-              <td>{{order.last_name}}</td>
-              <td>{{order.country}}</td>
-              <td>{{order.region}}</td>
-              <td>{{order.town}}</td>
-              <td>{{order.address1}}</td>
-              <td>{{order.amount}}</td>
-              <td>{{order.status}}</td>
-              <td>
-              <a href="{% url 'update_order' order.id %}"> edit </a>
-              </td>
-            </tr>
-            {% endfor %}
+            <div class="subcontainer_dashboard bg-light">
+                <div class="vr bg-warning" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
+            </div>
+            <div class="bg-light">
+                <div class="vr bg-primary" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
+            </div>
+            <div class="row">
+                <div>
+                    <select class="select">
+                        <option >Bulk Add</option>
+                        <option >Delete</option>>
+                    </select>
+                    <button class="button1">Apply</button>
+                    <select class="select">
+                        <option>Categories</option>
+                    </select>
+                    <select class="select">
+                        <option>Filter by Product type</option>
+                    </select>
+                    <select class="select">
+                        <option>Filter by Stock Status</option>
+                    </select>
+                    <button class="button1">Filter</button>
+                </div>
+            </div>
             
-        </table>
-          
+            <table>
+                <tr class="bg-primary text-white">
+                  <th>User</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Country</th>
+                  <th>Region</th>
+                  <th>Town</th>
+                  <th>Address1</th>
+                  <th>Prdt Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                  {% comment %} <td><input type="checkbox">#</td> {% endcomment %}
+                  <td>{{order.user}}</td>
+                  <td>{{order.first_name}}</td>
+                  <td>{{order.last_name}}</td>
+                  <td>{{order.country}}</td>
+                  <td>{{order.region}}</td>
+                  <td>{{order.town}}</td>
+                  <td>{{order.address1}}</td>
+                  <td>{{order.amount}}</td>
+                  <td>{{order.status}}</td>
+                  <td>
+                  <a href="{% url 'update_order' order.id %}"> edit </a>
+                  </td>
+                </tr>
+                {% endfor %}
+                
+            </table>
+        </div>  
      </body>
  </html>
 
