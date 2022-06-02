@@ -88,29 +88,28 @@
                                                 <div class="subcontainer_dashboard">
                                                     <table class="table">
                                                         <thead>
+                                                            
                                                           <tr class="bg-primary text-white">
                                                             <th scope="col">OrderID</th>
                                                             <th scope="col">Name</th>
-                                                            <th scope="col">Amount</th>
+                                                            <th scope="col">Amount </th>
                                                             <th scope="col">Method</th>
                                                             <th scope="col">Date</th>
                                                           </tr>
+                                                          
                                                         </thead>
                                                         <tbody>
+                                                            {% for payment in payments %}
                                                           <tr>
-                                                            <th scope="row"><input type="checkbox">#</th>
-                                                            <td>Joyce</td>
-                                                            <td>GHC 200</td>
-                                                            <td>Paypal</td>
-                                                            <td>22/03/2022</td>
+                                                            
+                                                            <td>{{payment.ref}}</td>
+                                                            <td>{{request.user}}</td>
+                                                            <td>{{payment.amount}}</td>
+                                                            <td>{{payment.verified}}</td>
+                                                            <td>{{payment.date_created}}</td>
                                                           </tr>
-                                                          <tr>
-                                                            <th scope="row"><input type="checkbox">#</th>
-                                                            <td>Gucci Shirt</td>
-                                                            <td>Tops</td>
-                                                            <td>GHC 200</td>
-                                                            <td>200</td>
-                                                          </tr>
+                                                          {% endfor %}
+                                                         
                                                         </tbody>
                                                     </table>
                                                 </div>

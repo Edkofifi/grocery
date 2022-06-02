@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-*&^d^29m+e4nwn_=-l&ugc8cf(#+hm!#0&&nt#78e1)az+)c&-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['shoesgarden.herokuapp.com','127.0.0.1']
+# ALLOWED_HOSTS = ['shoesgarden.herokuapp.com','127.0.0.1', '10.18.219.108', '10.0.2.2']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'cloudinary',
     
     'crispy_forms',
+    'rest_framework',
     
 ]
 
@@ -136,6 +138,7 @@ STATICFILES_DIRS =[
     os.path.join(BASE_DIR,'static')
     ] 
 
+django_heroku.settings.locals(())
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/siteImages/'

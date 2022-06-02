@@ -7,7 +7,7 @@ from django.contrib import messages
 from adminDashboard import models
 from adminDashboard.form import CategoryForm, ProductForm, UpdateItem
 from django.contrib.auth.models import User
-from new_shop.models import Category, Item, Order
+from new_shop.models import Category, Item, Order, Payment
 from new_shop.views import userAccount
 
 def admin_login(request):
@@ -156,8 +156,9 @@ def statistics(request):
     return render(request, 'admin_dashboard/statistics.html')
 
 def payments(request):
+    payments = Payment.objects.all()
 
-    context = {}
+    context = {'payments': payments}
     return render(request, 'admin_dashboard/payments.html', context)
 
 def reports(request):

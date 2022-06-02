@@ -1,6 +1,6 @@
-import json
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+# import json
+# from django.http import HttpResponse, JsonResponse
+# from django.shortcuts import render
 
 from new_shop.models import Category, Item
 
@@ -14,13 +14,13 @@ from new_shop.models import Category, Item
 from django.core.serializers import serialize
 from django.http import HttpResponse
 
-def products_api(request):
-    products = Item.objects.all().values()
+# def products_api(request):
+#     items = Item.objects.all().values('name')
 
-    list_items = list(products)
+#     list_items = list(items)
 
-    data = json.dumps(list_items)
-    return HttpResponse(data)
+#     products = json.dumps(list_items)
+#     return HttpResponse(products)
 
 
 # def django_models_json(request):
@@ -34,10 +34,28 @@ def products_api(request):
 #     data = json.dumps(list_of_dicts)
 #     return HttpResponse(data, content_type="application/json")
 
+# def categories_api(request):
+#     cats = Category.objects.all().values('title')
+
+#     list_items = list(cats)
+
+#     categories = json.dumps(list_items)
+#     return HttpResponse(categories)
+
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import CategorySerializer, ItemSerializer
+
+@api_view(['GET', 'HEAD'])
+def products_api(request):
+    products = Item.objects.all()
+    serializer = ItemSerializer(products, many=True)
+
+    return Response(serializer.data)
+@api_view(['GET'])
 def categories_api(request):
-    categories = Category.objects.all().values('title')
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
 
-    list_items = list(categories)
-
-    data = json.dumps(list_items)
-    return HttpResponse(data)
+    return Response(serializer.data)
