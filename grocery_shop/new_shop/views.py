@@ -123,7 +123,7 @@ def contact(request):
             message_subject + ' - Email: ' + message_email,
             message,
             settings.EMAIL_HOST_USER,
-            ['princeofori723@gmail.com']
+            ['atk.eddy@gmail.com']
         )
         
         return render(request, 'pages/contact.html')
