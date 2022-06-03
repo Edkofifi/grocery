@@ -31,22 +31,22 @@ DEBUG = True
 ALLOWED_HOSTS = ['*', '10.0.2.2']
 
 #CORS ORIGIN ALLOWED HOSTS
-CORS_ALLOWED_ORIGINS = [
-    "http://10.0.2.2:8000",
-    "http://localhost:8000",
-    "http://127.0.0.1:8000",
-    '10.0.2.2'
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://10.0.2.2:8000",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:8000",
+#     '10.0.2.2'
+# ]
 
 #CORS ALLOWED METHODS
-CORS_ALLOW_METHODS = [
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-]
+# CORS_ALLOW_METHODS = [
+#     "DELETE",
+#     "GET",
+#     "OPTIONS",
+#     "PATCH",
+#     "POST",
+#     "PUT",
+# ]
 
 # Application definition
 
@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'cart',
     'cloudinary_storage',
     'cloudinary',
-    "corsheaders",
+    # "corsheaders",
     'crispy_forms',
     'rest_framework',
     
@@ -80,8 +80,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
+    # "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'grocery_shop.urls'
