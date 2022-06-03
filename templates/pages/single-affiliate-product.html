@@ -48,6 +48,10 @@
                                 <!--== Start Product Info Area ==-->
                                 {% if item %}
                                 <div class="product-single-info">
+                                    <div class="swiper-slide">
+                                        <img src="{{item.image.url}}" width="127" height="127"
+                                            alt="Image-HasTech" />
+                                    </div>
                                     <h3 class="main-title">{{item.name}}</h3>
                                     <div class="prices">
                                         <span class="price">GH₵{{item.price}}</span>
