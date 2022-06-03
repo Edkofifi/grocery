@@ -140,16 +140,14 @@
                                               </tr>
                                             </thead>
                                             <tbody>
+                                                {% for sale in best_sales %}
                                               <tr>
-                                                <th scope="row"><input type="checkbox">#</th>
-                                                <td>Gucci Shirt</td>
-                                                <td>22/04/2022</td>
+                                                <td>{{sales.ref}}</td>
+                                                <td>{{sales.amount}}</td>
+                                                <td>{{sales.date_created}}</td>
                                               </tr>
-                                              <tr>
-                                                <th scope="row"><input type="checkbox">#</th>
-                                                <td>Gabani Shoes</td>
-                                                <td>12/02/2012</td>
-                                              </tr>
+                                              {% endfor %}
+                                              
                                             </tbody>
                                         </table>
                                     </div>
