@@ -104,7 +104,7 @@ class Item(models.Model):
     has_discount = models.BooleanField(default = False, verbose_name='Has Discount')
     discount = models.IntegerField(blank=True, null=True, verbose_name='Discount')
     price = models.FloatField(verbose_name='Price')
-    price_filter_range = models.ForeignKey(Filter_price, on_delete = models.SET_NULL, null= True)
+    # price_filter_range = models.ForeignKey(Filter_price, choices=stock_status, on_delete = models.SET_NULL, null= True, blank=True)
     discount_price = models.FloatField(blank=True, null=True, verbose_name='Discount Price')
     quantity_available = models.IntegerField(verbose_name='Quantity in Stock')
     
