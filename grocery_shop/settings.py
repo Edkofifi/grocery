@@ -28,7 +28,25 @@ SECRET_KEY = 'django-insecure-*&^d^29m+e4nwn_=-l&ugc8cf(#+hm!#0&&nt#78e1)az+)c&-
 DEBUG = True
 
 # ALLOWED_HOSTS = ['shoesgarden.herokuapp.com','127.0.0.1', '10.18.219.108', '10.0.2.2']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '10.0.2.2']
+
+#CORS ORIGIN ALLOWED HOSTS
+CORS_ALLOWED_ORIGINS = [
+    "http://10.0.2.2:8000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    '10.0.2.2'
+]
+
+#CORS ALLOWED METHODS
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
 
 # Application definition
 
@@ -45,7 +63,7 @@ INSTALLED_APPS = [
     'cart',
     'cloudinary_storage',
     'cloudinary',
-    
+    "corsheaders",
     'crispy_forms',
     'rest_framework',
     
@@ -62,6 +80,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'grocery_shop.urls'

@@ -52,7 +52,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for order in orders %}
+                {% for category in categories %}
                 <tr>
                     {% comment %} <th scope="row"><input type="checkbox">#</th> {% endcomment %}
                     <td>{{category.title}}</td>
@@ -66,39 +66,11 @@
                 </tr>
                 {% endfor %}
             </tbody>
-            <tfoot>
-                <tr>
-                <th class="th-sm">Name
-            
-                </th>
-                <th class="th-sm">Category
-            
-                </th>
-                <th class="th-sm">Price
-            
-                </th>
-                <th class="th-sm">Discount Price
-            
-                </th>
-                <th class="th-sm">Status
-            
-                </th>
-                <th class="th-sm">Number in Stock
-            
-                </th>
-                </tr>
-            </tfoot>
+           
             </table>
 
             <script>
-            {% comment %} $(document).ready(function(){
-                $('#bootsrapdatatable').DataTable({
-                    "aLengthMenu": [[3,5,10,25, -1], [3,5,10,25, "All"]],
-                    "iDisplayLength": 3
-                }
-                );
-            });
-            {% endcomment %}
+            
             $(document).ready(function () {
                 $('#dtBasicExample').DataTable({
                 "paging": true // false to disable pagination (or any other option)
