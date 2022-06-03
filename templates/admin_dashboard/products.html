@@ -14,19 +14,25 @@
     <body> 
         <div class="containerCover">
             <div class="row">
-                <h2>Products</h2>
-                <div class="d-flex flex-row-reverse bd-highlight">
-                    <div class="p-2 bd-highlight">
-                        <span>
-                            <a href="{% url 'product_add' %}" class="active">
-                                <button class="button1">Add Product</button>
-                            </a>
-                        </span>
+                <div class="col">
+                    <h2>Products</h2>
+                </div>
+                <div class="col">
+
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <div class="p-2 bd-highlight">
+                            <span>
+                                <a href="{% url 'product_add' %}" class="active">
+                                    <button class="button1">Add Product</button>
+                                </a>
+                            </span>
+                        </div>
                     </div>
+
                 </div>
             </div>
             <div class="subcontainer_dashboard bg-light">
-                <div class="vr bg-warning" style="height: 40px;width: 3px; margin-bottom: 5px;"></div>
+                <div class="vr bg-warning" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
             </div>
             <div class="bg-light">
                 <div class="vr bg-primary" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
