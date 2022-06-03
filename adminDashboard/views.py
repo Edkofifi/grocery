@@ -39,7 +39,7 @@ def dashboard(request):
 
     total_payments = 0
     for pay in payments:
-        total_payments += pay
+        total_payments += int(pay)
         return total_payments
 
     context = {'payments': payments,
