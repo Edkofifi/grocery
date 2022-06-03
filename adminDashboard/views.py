@@ -34,23 +34,18 @@ def admin_logout(request):
 def dashboard(request):
     orders = Order.objects.all()
     users = User.objects.all()
-    payments = Payment.objects.all()
-    best_sales = Payment.objects.all().order_by('amount')
+    
+    # total_payments = 0
+    # for pay in payments:
+    #     total_payments += int(pay.amount)
+    #     return total_payments
 
-    total_payments = 0
-    for pay in payments:
-        total_payments += int(pay.amount)
-        return total_payments
-
-    context = {'payments': payments,
-                'best_sales' : best_sales,
-                'total_payments': total_payments}
+    
 
     context ={'orders':orders,
               'users':users,
               'payments': payments,
-                'best_sales' : best_sales,
-                'total_payments': total_payments}
+                }
     return render(request, 'admin_dashboard/dashboard.html', context)
 
 def profile(request):
