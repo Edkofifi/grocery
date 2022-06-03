@@ -1,0 +1,169 @@
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Payment</title>
+ 
+
+        <link rel="stylesheet" href="{% static 'assets/css/style_primary.css' %}">
+    </head>
+    <body>
+        <div class="containerCover">
+            <div class="container">
+                <div>
+                    <h2>Payments</h2>
+                </div>
+                <div class="subcontainer_dashboard bg-light">
+                    <div class="vr bg-warning" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
+                </div>
+                <div class="bg-light">
+                    <div class="vr bg-primary" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
+                </div>
+                <div class="subcontainer_dashboard">
+                    <p>Select your payment method, and Integrate it into the system</p>
+                </div>
+                <div>
+                   
+                <div class="row">
+                    <div class="col">
+                        <div class="row"  style="width: 50rem;">
+                           <div class="col">
+                                <div class="card bg-primary" style="height: 300px;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title">PayPal</h5>
+                                            </div>
+                                            <div class="col">
+                                                <img src="https://th.bing.com/th/id/R.333e05ce3da370b35742098278e187f5?rik=2z5xUxbxeIhBJQ&riu=http%3a%2f%2ficons.iconarchive.
+                                                com%2ficons%2falecive%2fflatwoken%2f72%2fApps-Paypal-icon.png&ehk=bgMB59M0LGf6W1c%2bqc2qkcLJByvlqGh2%2fTobtyH%2fvBk%3d&risl=&pid=ImgRaw&r=0" 
+                                                title="Title of image" alt="alt text here" style="width: 50px; height: 50px;"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col">
+                                <div class="card bg-warning" style="height: 300px;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <h5 class="card-title">MTN MoMo</h5>
+                                            </div>
+                                            <div class="col">
+                                                <img src=" https://th.bing.com/th/id/R.cc80cc6241b8bb660446e27e6d789883?rik=sCGeN8W2BQQMnA&pid=ImgRaw&r=0" 
+                                                title="Title of image" alt="alt text here" style="width: 50px; height: 50px;"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col">
+                                <div class="card" style="height: 300px;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5 class="card-title">CashApp</h5>
+                                            </div>
+                                            <div class="col">
+                                                <img src="https://th.bing.com/th/id/R.ae998936a349d5bafaceafa23fefc8c6?rik=N9oQyAsN863xug&pid=ImgRaw&r=0" 
+                                                title="Title of image" alt="alt text here" style="width: 50px; height: 50px;"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="subcontainer_dashboard">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card" >
+                                            <div class="card-body">
+                                                <h5 class="card-title">Recent Payments</h5>
+                                                <div class="subcontainer_dashboard">
+                                                    <table class="table">
+                                                        <thead>
+                                                            
+                                                          <tr class="bg-primary text-white">
+                                                            <th scope="col">OrderID</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Amount </th>
+                                                            <th scope="col">Method</th>
+                                                            <th scope="col">Date</th>
+                                                          </tr>
+                                                          
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for payment in payments %}
+                                                          <tr>
+                                                            
+                                                            <td>{{payment.ref}}</td>
+                                                            <td>{{request.user}}</td>
+                                                            <td>{{payment.amount}}</td>
+                                                            <td>{{payment.verified}}</td>
+                                                            <td>{{payment.date_created}}</td>
+                                                          </tr>
+                                                          {% endfor %}
+                                                         
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card bg-light text-dark"  style="height: 560px; width: 300px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title">Best Sales</h5>
+                                        <h6 class="card-subtitle mb-2 text-white">250</h6> 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="subcontainer_dashboard ">
+                                        <table class="table text-dark">
+                                            <thead>
+                                              <tr class="bg-primary text-white">
+                                                <th scope="col">OrderID</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Date</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <th scope="row"><input type="checkbox">#</th>
+                                                <td>Gucci Shirt</td>
+                                                <td>22/04/2022</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row"><input type="checkbox">#</th>
+                                                <td>Gabani Shoes</td>
+                                                <td>12/02/2012</td>
+                                              </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+     <!--script-->
+      <script src="./chart.js"></script>
+    </body>
+</html>
+
+{% endblock content %}

@@ -1,0 +1,97 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+{% load cart_tag %}
+
+{% block content %}
+
+<main class="main-content">
+    <!--== Start Shopping Checkout Area Wrapper ==-->
+    <section class="shopping-checkout-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 m-auto mx-auto">
+                    <!--== Start Order Details Accordion ==-->
+                    <div class="checkout-order-details-wrap">
+                        <div class="order-details-table-wrap table-responsive">
+                            <h2 class="title mb-25">Your order</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-body">
+                                    {% for key,value in request.session.cart.items %}
+                                    <tr class="cart-item">
+                                        <td class="product-name">{{value.name}}<span class="product-quantity">×
+                                                {{value.quantity}}</span>
+                                        </td>
+                                        <td class="product-total">GH₵ {{value.price}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                <tfoot class="table-foot">
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal</th>
+                                        <td>GH₵{{cart_total_amount}}</td>
+                                    </tr>
+                                    <tr class="shipping">
+                                        <th>Shipping</th>
+                                        <td>Flat rate: GH₵0.00</td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Total </th>
+                                        <td>GH₵{{cart_total_amount}}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <div class="shop-payment-method">
+                                <!-- <a href="{% url 'loginUser' %}" class="btn-theme btn-flat">Payment Now</a> -->
+                                <script src="https://js.paystack.co/v1/inline.js"></script>
+                                <button class="btn-theme btn-flat rounded-pill m-auto mx-auto px-5" type="submit" id="django-paystack-btn"
+                                    onclick="payWithPayStack()">Make Payment</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== End Order Details Accordion ==-->
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</main>
+
+
+ <script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+    const payWithPayStack = () => {
+        let currency = "GHS";
+        let plan = "";
+        let ref = "{{payment.ref}}";
+        let channel = ['mobile_money'];
+        let obj = {
+            key: "{{paystack_public_key}}",
+            email: "{{payment.email}}",
+            amount: "{{payment.amount_value}}",
+            ref: ref,
+            channels: channel,
+            callback: function (response) {
+                window.location.href = "{% url 'payment' payment.ref %}";
+            }
+        }
+
+        if (Boolean(currency)) {
+            obj.currency = currency.toUpperCase();
+        }
+        if (Boolean(plan)) {
+            obj.plan = plan;
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+        
+    }
+</script>
+
+{% endblock %}

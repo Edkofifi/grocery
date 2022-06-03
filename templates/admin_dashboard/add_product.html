@@ -1,0 +1,99 @@
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'assets/css/style_primary.css' %}">
+    </head>
+    <body>
+        <div class="container">
+        <div class="add-product">
+            <form method="POST" action="{% url 'product_add' %}"  enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{form.as_p}}
+            {% comment %} <div>
+                <label>Product name:</label>
+                <input type="text" placeholder="Casio Watch" />
+            </div>
+            
+            <div>
+                <label>Product description:</label>
+                <textarea placeholder="Sample description..."></textarea>
+            </div>
+            
+            <div>
+                <label>Product image:</label>
+                <input type="text" placeholder="http://...jpg" />
+            </div>
+            
+            <div>
+                <label>Product price:</label>
+                <input type="number" min="0" placeholder="33.50" />
+            </div>
+
+            <div>
+                <label>Display-in:</label>
+                <select class="select1">
+                    <option>Featured</option>
+                    <option>Best-Seller</option>
+                    <option>Shop</option>
+                </select>
+                
+            </div>
+
+            <div>
+                <label>Item status:</label>
+                <select class="select1">
+                    <option>In Stock</option>
+                    <option>Out of Stock</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Discount:</label>
+                <input type="number" min="0" placeholder="33.50" />
+            </div>
+
+            <div>
+                <label>Has-Discount:</label>
+                <select class="select1">
+                    <option>True</option>
+                    <option>False</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Price-Range:</label>
+                <input type="number" min="0" placeholder="33.50" />
+            </div>
+             {% endcomment %}
+            <button>save</button>
+            </form>
+        </div>
+        
+        {% comment %} <div class="list-products">
+            <div class="product">
+            <img src="https://sc02.alicdn.com/kf/HTB1gHRfg6uhSKJjSspmq6AQDpXaI/Accept-Sample-Design-Your-Own-Blank-Wrist.jpg_350x350.jpg" />
+            <p>Sample Watch</p>
+            <p>$199</p>
+            <button class="details-button">Details</button>
+            <button class="buy-button">Buy</button>
+            </div>
+            
+           
+            
+        </div> {% endcomment %}
+        
+        
+        </div>
+        </div>
+    </body>
+</html>
+
+
+{% endblock content %}

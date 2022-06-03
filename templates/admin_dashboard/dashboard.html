@@ -1,0 +1,200 @@
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dashboard</title>
+        <meta charset="utf-8">
+ 
+
+        <link rel="stylesheet" href="{% static 'assets/css/style_primary.css' %}">
+        
+    </head>
+    <body>
+        <div class="containerCover">
+            <div class="container">
+                <div class="row">
+                    <!--First col-->
+                    <div class ="col-md-8">
+                        <!--Containers in the first col-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="card bg-primary" >
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6>Total Orders</h6>
+                                            <h6 class="card-subtitle mb-2 text-white">{{orders.count}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col">
+                                <div class="card" style="background-color:violet" >
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6>Total Sales</h6>
+                                                <h6 class="card-subtitle mb-2 text-white">200</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="col">
+                                <div class="card bg-info">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6>Orders Revenue</h6>
+                                                <h6 class="card-subtitle mb-2 text-white">1102</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col">
+                                <div class="card bg-danger">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h6>Total Users</h6>
+                                                <h6 class="card-subtitle mb-2 text-white">{{users.count}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                       <div class="subcontainer_dashboard">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6>Product Sales</h6>
+                                            <h6 class="card-subtitle mb-2 text-white">250</h6>
+                                            <canvas id="productmetrix" style="width:100%;max-width:800px; height:300px"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                        <!--end of designs in first col-->
+                    </div>
+                    <!--end of first col-->
+                    
+                    <div class ="col-md-3">
+                        <div class="leftAway">
+                            <div class="card" >
+                                <div class="card-body" style="height:500px">
+                                    <h6>Sales by Country</h6>
+                                    <div class="card-body bg-primary" style="height:120px">
+                                        <img src="https://www.shutterstock.com/image-vector/colored-world-map-political-maps-colourful-1431106031" style="height:90px; width:150px" />
+                                    </div>
+                                    
+                                    <h6 class="subcontainer_dashboard">Reputation</h6>
+                                    <div class="card-body rounded" style="border-style: dotted; border-color: orange; height:70px">
+                                        <div class ="row">
+                                            <div class="col-sm-1"><i class="fas fa-funnel-dollar"></i></div>
+                                            <div class="col-sm-7"><h6>short sale</h6></div>
+                                            <div class="col">70%</div>
+                                        </div>
+                                        <progress id="file" value="32" max="100" style="color: green"> 32% </progress>
+                                    </div>
+                                    <div class="innercontainer">
+                                        <div clas="card">
+                                            <div class="card-body rounded" style=" border-style: dotted; border-color: violet; height:70px" >
+                                                <div class ="row">
+                                                    <div class="col-sm-1"><i class="fas fa-dollar-sign"></i></div>
+                                                    <div class="col-sm-7"><h6>total sale</h6></div>
+                                                    <div class="col">70%</div>
+                                                </div>
+                                                <progress value="32" max="100"> 32% </progress>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="innercontainer">
+                                        <div class="card-body rounded" style="border-style: dotted; border-color: blue; height:70px" >
+                                            <div class ="row">
+                                                <div class="col-sm-1"><i class="far fa-calendar-check"></i></div>
+                                                <div class="col-sm-7"><h6>total orders</h6></div>
+                                                <div class="col">70%</div>
+                                            </div>
+                                            <progress id="file" value="32" max="100" > 32% </progress>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--begin next row-->
+                    <div class="subcontainer_dashboard">
+                        <div class="row">
+                            
+                            <div class="col-md-8">
+                                <div class="card" >
+                                    <div class="card-body">
+                                        <h6>Popular Products</h6>
+                                        <div class="subcontainer_dashboard">
+                                            <table class="table">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">User ID</th>
+                                                    <th scope="col">Sales</th>
+                                                    <th scope="col">Pricing</th>
+                                                    <th scope="col">Stock Status</th>
+                                                    <th scope="col">Action</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>David</td>
+                                                    <td>Nortey</td>
+                                                    <td>Accra</td>
+                                                    <td>I dont like the shirt I got</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Mercy</td>
+                                                    <td>White</td>
+                                                    <td>Accra</td>
+                                                    <td>Just received my Oder, Thanks</td>
+                                                  </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class ="col-md-3">
+                                <div class="leftAway">
+                                    <div class="card" >
+                                        <div class="card-body">
+                                            <h6>Average Sales</h6>
+                                            <canvas id="stocks" style="width:100%;max-width:800px; height: 160px"></canvas>
+                                        </div>
+                                    </div>
+
+                        </div>
+                    </div>
+                    <!--second col-->
+                    
+                </div>
+            </div>
+        </div>
+     <!--script-->
+      <script src="{% static 'assets/js/chart.js' %}"></script>
+    </body>
+</html>
+
+{% endblock content %}

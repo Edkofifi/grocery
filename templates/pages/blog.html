@@ -1,0 +1,41 @@
+
+{% extends "base/base.html" %}
+
+{% block content %}
+{% load static  %}
+<main class="main-content">
+    <!--== Start Blog Area Wrapper ==-->
+    <section class="blog-area blog-inner-area">
+        <div class="container">
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-md-6 col-lg-4">
+                    <!--== Start Blog Item ==-->
+                    <div class="post-item">
+                        <div class="inner-content">
+                            <div class="thumb">
+                                <a href="{% url 'blog_details' blog.pk %}"><img src="{{blog.blog_image.url}}" width="370" height="260" alt="Image-HasTech"></a>
+                            </div>
+                            <div class="content">
+                                <div class="meta-post">
+                                    <ul>
+                                        <li class="post-date"><i class="fa fa-calendar"></i><a href="{% url 'blog' %}">{{blog.published_date}}</a></li>
+                                        <li class="author-info"><i class="fa fa-user"></i><a href="{% url 'blog' %}">{{blog.author}}</a></li>
+                                    </ul>
+                                </div>
+                                <h4 class="title"><a href="{% url 'blog_details' blog.pk %}">{{blog.blog_title}}</a></h4>
+                                <a class="post-btn" href="{% url 'blog' %}">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--== End Blog Item ==-->
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    <!--== End Blog Area Wrapper ==-->
+</main>
+
+{% endblock content %}

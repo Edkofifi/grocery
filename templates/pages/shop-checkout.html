@@ -1,0 +1,217 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+
+{% load static %}
+{% load cart_tag %}
+
+<main class="main-content">
+    <!--== Start Shopping Checkout Area Wrapper ==-->
+    <section class="shopping-checkout-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="checkout-page-coupon-wrap">
+                        <!--== Start Checkout Coupon Accordion ==-->
+                        <div class="coupon-accordion" id="CouponAccordion">
+                            <div class="card">
+                                <h3>
+                                    <i class="fa fa-info-circle"></i> Have a Coupon?
+                                    <a href="#/" data-bs-toggle="collapse" data-bs-target="#couponaccordion">Click here
+                                        to enter your code</a>
+                                </h3>
+                                <div id="couponaccordion" class="collapse" data-bs-parent="#CouponAccordion">
+                                    <div class="card-body">
+                                        <div class="apply-coupon-wrap mb-60">
+                                            <p>If you have a coupon code, please apply it below.</p>
+                                            <form action="#" method="post">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input class="form-control" type="text"
+                                                                placeholder="Coupon code">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button class="btn-coupon">Apply coupon</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--== End Checkout Coupon Accordion ==-->
+                    </div>
+                </div>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!--== Start Billing Accordion ==-->
+                        <div class="checkout-billing-details-wrap">
+                            <h2 class="title">Billing details</h2>
+                            <div class="billing-form-wrap">
+                                <!-- <form action="#" method="post"> -->
+                                <div class="row small">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="f_name">First name </abbr></label>
+                                            <input name="f_name" type="text" class="form-control py-3"
+                                                value="{{user.first_name}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="l_name">Last name </abbr></label>
+                                            <input name="l_name" type="text" class="form-control  py-3"
+                                                value="{{user.last_name}}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="country">Country</label>
+                                            <input name="country" type="text" class="form-control py-3" value="GHANA"
+                                                readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="region">Region </label>
+                                            <select name="region" class="form-control py-3" required>
+                                                <option>Afghanistan</option>
+                                                <option>Albania</option>
+                                                <option>Algeria</option>
+                                                <option>Armenia</option>
+                                                <option>India</option>
+                                                <option>Pakistan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="town">Town / City </label>
+                                            <input name="town" type="text" class="form-control py-3" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="street-address">Street address </label>
+                                            <input name="address1" type="text" class="form-control py-3"
+                                                placeholder="House number and street name" required py-3>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="street-address2" class="visually-hnameden">Street address
+                                                2</label>
+                                            <input name="address2" type="text" class="form-control py-3"
+                                                placeholder="Apartment, suite, unit etc. (optional)">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="pz-code">GPS</label>
+                                            <input name="gps_code" type="text" class="form-control py-3"
+                                                placeholder="GPS Code (optional)">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input name="phone" type="text" class="form-control py-3" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input name="email" type="email" class="form-control py-3"
+                                                value={{user.email}} readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mb--0">
+                                            <label for="order-notes">Order notes (optional)</label>
+                                            <textarea name="order_notes" class="form-control py-5"
+                                                placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+                        <!--== End Billing Accordion ==-->
+                    </div>
+                    <div class="col-lg-6">
+                        <!--== Start Order Details Accordion ==-->
+                        <div class="checkout-order-details-wrap">
+                            <div class="order-details-table-wrap table-responsive">
+                                <h2 class="title mb-25">Your order</h2>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-total">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-body">
+                                        {% for key,value in request.session.cart.items %}
+                                        <tr class="cart-item">
+                                            <td class="product-name">{{value.name |truncatewords:7}}<span
+                                                    class="product-quantity">×
+                                                    {{value.quantity}}</span>
+                                            </td>
+                                            <td class="product-total">GH₵ {{value.price}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot class="table-foot">
+                                        <tr class="cart-subtotal">
+                                            <th>Subtotal(GH₵)</th>
+                                            <td>{{cart_total_amount}}</td>
+                                        </tr>
+                                        <tr class="shipping">
+                                            <th>Shipping</th>
+                                            <td>Flat rate(GH₵): 0.00</td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Total(GH₵) </th>
+                                            <div class="text-end">
+                                                <td>
+                                                    <input class="border-0 float-end text-end" type="number"
+                                                        value="{{cart_total_amount}}" name="amount" readonly><span
+                                                        
+                                            </div>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div class="shop-payment-method">
+                                    <p class="p-text">Your personal data will be used to process your order, support
+                                        your
+                                        experience throughout this website, and for other purposes described in our <a
+                                            href="#/">privacy policy.</a></p>
+                                    <div class="agree-policy">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="privacy"
+                                                class="custom-control-input visually-hidden" required>
+                                            <label for="privacy" class="custom-control-label" >I have read and
+                                                agree to the
+                                                website terms and conditions <span class="required">*</span></label>
+                                        </div>
+                                    </div>
+                                    <button type="submit"
+                                        class="btn-theme btn-flat rounded-pill m-auto mx-auto px-5">Place
+                                        order</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--== End Order Details Accordion ==-->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!--== End Shopping Checkout Area Wrapper ==-->
+</main>
+
+{% endblock content %}

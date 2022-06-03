@@ -1,0 +1,137 @@
+{% extends "base/base.html" %}
+{% block content %}
+{% load static %}
+{% load cart_tag %}
+
+<main class="main-content">
+    <!--== Start Blog Area Wrapper ==-->
+    {% if request.session.cart|length > 0 %}
+    <section class="shopping-cart-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="shopping-cart-form table-responsive">
+                        <form action="#" method="post">
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="product-remove">&nbsp;</th>
+                                        <th class="product-thumb">&nbsp;</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for key,value in request.session.cart.items %}
+                                    <tr class="cart-product-item">
+                                        <td class="product-remove">
+                                            <a href="{% url 'item_clear' key %}"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                        <td class="product-thumb">
+                                            <a href="{% url 'item_detail' value.product_id %}">
+                                                <img src="{{value.image}}" width="90" height="110"
+                                                    alt="Image-HasTech" />
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            <h4 class="title">
+                                                <a href="{% url 'item_detail' value.product_id %}">{{value.name|truncatewords:7}}</a>
+                                            </h4>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="price">GH₵{{value.price}}</span>
+                                        </td>
+                                        <td class="product-quantity">
+                                            <a class="mr-2" href="{% url 'item_decrement' value.product_id %}"><span><i
+                                                        class="fa fa-minus"></i></span></a>
+                                            {{ value.quantity }}
+                                            <a class="mr-2" href="{% url 'item_increment' value.product_id %}"><span><i
+                                                        class="fa fa-plus"></i></span></a>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="price">GH₵{{ value.price|multiply:value.quantity }}</span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr class="actions">
+                                        <td class="border-0" colspan="6">
+                                            <a href="{% url 'homepage' %}" class="btn-theme btn-flat mb-2">Continue
+                                                Shopping</a>
+                                            <a href="{% url 'cart_clear' %}"
+                                                class="btn-theme btn-flat clear-cart pull-right">Clear Cart</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-gutter-50">
+                <div class="col-md-6 col-lg-4">
+                    <div class="shipping-form-coupon">
+                        <div class="section-title-cart">
+                            <h5 class="title">Coupon Code</h5>
+                            <div class="desc">
+                                <p>Enter your coupon code if you have one.</p>
+                            </div>
+                        </div>
+                        <form action="#" method="post">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="couponCode" class="visually-hidden">Coupon Code</label>
+                                        <input type="text" id="couponCode" class="form-control"
+                                            placeholder="Enter your coupon code.." />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="coupon-btn">
+                                            Apply coupon
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-5">
+                    <div class="shipping-form-cart-totals">
+                        <div class="section-title-cart">
+                            <h5 class="title">Cart totals</h5>
+                        </div>
+                        <div class="cart-total-table">
+                            <table class="table">
+                                <tbody>
+                                    <tr class="cart-subtotal">
+                                        <td>
+                                            <p class="value">Subtotal</p>
+                                        </td>
+                                        <td>
+                                            <p class="price">GH₵{{cart_total_amount}}</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a class="btn-theme btn-xs mt-2" href="{% url 'checkout' %}">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% else %}
+
+    <div class="text-center py-5 shopping-cart-form">
+        <h3 class="mb-3">Your cart is empty.</h3>
+        <a href="{% url 'shop' %}" class="btn-theme btn-flat rounded-pill"><i class="fa fa-long-arrow-alt-left mr-2 "> </i>Continue shopping</a>
+    </div>
+
+    {% endif %}
+    <!--== End Blog Area Wrapper ==-->
+</main>
+
+{% endblock %}

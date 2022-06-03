@@ -1,0 +1,204 @@
+
+{% extends 'base/basefile.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Statistics</title>
+
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="{% static 'assets/css/style_primary.css' %}">
+    </head>
+    <body>
+        <div class="containerCover">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col">
+                        <div class ="card" style="width: 49rem;">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title">Stock</h5>
+                                                </div>
+                                                <canvas id="stocks_statistics" style="width:100%;max-width:800px; height: 160px"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title">Orders</h5>
+                                                </div>
+                                                <canvas id="Orders" style="width:100%;max-width:800px; height: 160px"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title">Completed</h5>
+                                                </div>
+                                                <canvas id="Completed" style="width:100%;max-width:800px; height: 160px"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="col">
+                                    <div class="card" >
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h5 class="card-title">Processing</h5>
+                                                </div>
+                                                <canvas id="processing" style="width:100%;max-width:800px; height: 160px"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title">Vistors</h5>
+                                        </div>
+                                        <canvas id="visitors" style="width:100%;max-width:800px; height: 160px"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subcontainer_dashboard">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card" style="width: 49rem;">
+                                <div class="card-body" >
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <h5 class="card-title">Product Metrix</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div>
+                                                <ul class="nav nav-pills nav-pills-custom justify-content-md-end" id="pills-tab-custom"
+                                                role="tablist">
+                                                <li class="nav-item">
+                                                  <a class="nav-link active" id="pills-home-tab-custom" data-toggle="pill"
+                                                    href="#pills-health" role="tab" aria-controls="pills-home" aria-selected="true">
+                                                    Month
+                                                  </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                  <a class="nav-link" id="pills-profile-tab-custom" data-toggle="pill" href="#pills-career"
+                                                    role="tab" aria-controls="pills-profile" aria-selected="false">
+                                                    Year
+                                                  </a>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <canvas id="productmetrix" style="width:100%;max-width:800px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card" style="height: 440px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Top products</h5>
+                                        <div class="tablespace">
+                                            <table class="table">
+                                                <thead>
+                                                  <tr class="bg-primary text-white">
+                                                    <th scope="col">OrderID</th>
+                                                    <th scope="col">First Name</th>
+                                                    <th scope="col">Last Name</th>
+                                                    <th scope="col">Country</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Edmond</td>
+                                                    <td>Teye</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <th scope="row"><input type="checkbox">#</th>
+                                                    <td>Emmanuel</td>
+                                                    <td>Achanpong</td>
+                                                    <td>Ghana</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          <!--Script-->
+          <script src="{% static 'assets/js/chart.js' %}"></script>
+    </body>
+</html>
+
+
+{% endblock content %}
