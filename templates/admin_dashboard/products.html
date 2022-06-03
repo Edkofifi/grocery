@@ -22,9 +22,39 @@
                     <div class="d-flex flex-row-reverse bd-highlight">
                         <div class="p-2 bd-highlight">
                             <span>
-                                <a href="{% url 'product_add' %}" class="active">
+                                {% comment %} <a href="{% url 'product_add' %}" class="active">
                                     <button class="button1">Add Product</button>
-                                </a>
+                                </a> {% endcomment %}
+
+                                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Add Product
+                                </button>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">New Product</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="{% url 'product_add' %}"  enctype="multipart/form-data">
+                                                    {% csrf_token %}
+
+                                                    {{form.as_p}}
+                                                
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-primary">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </span>
                         </div>
                     </div>
@@ -32,34 +62,7 @@
                 </div>
             </div>
 
-            <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Add Product
-                </button>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">New Product</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" action="{% url 'product_add' %}"  enctype="multipart/form-data">
-                                    {% csrf_token %}
-
-                                    {{form.as_p}}
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary">Add</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                </div>
-
+            
             <div class="subcontainer_dashboard bg-light">
                 <div class="vr bg-warning" style="height: 70px;width: 5px; margin-bottom: 5px;"></div>
             </div>
