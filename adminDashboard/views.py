@@ -168,14 +168,14 @@ def payments(request):
     payments = Payment.objects.all()
     best_sales = Payment.objects.all().order_by('amount')
 
-    total_payments = 0
-    for pay in payments:
-        total_payments += pay
-        return total_payments
+    # total_payments = 0
+    # for pay in payments:
+    #     total_payments += pay
+    #     return total_payments
 
     context = {'payments': payments,
                 'best_sales' : best_sales,
-                'total_payments': total_payments}
+                }
   
     return render(request, 'admin_dashboard/payments.html', context)
 

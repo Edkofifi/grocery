@@ -361,7 +361,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="product-slider-wrap">
-                        <div class="swiper-container product-slider-col4-container">
+                        {% comment %} <div class="swiper-container product-slider-col4-container">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
                                     <!--== Start Product Item ==-->
@@ -390,7 +390,7 @@
                                                 </div>
                                                 <a class="banner-link-overlay" href="{% url 'shop' %}"></a>
                                             </div>
-                                            {% comment %} <div class="product-info">
+                                            <div class="product-info">
                                                 <div class="category">
                                                     <ul>
                                                         <li><a href="{% url 'shop' %}">Men</a></li>
@@ -406,10 +406,10 @@
                                                     <span class="sep">-</span>
                                                     <span class="price">GH₵240.00</span>
                                                 </div>
-                                            </div> {% endcomment %}
+                                            </div>
                                         </div>
                                     </div>
-                                    <!--== End prPduct Item ==-->
+                                    <!--== End prPduct Item ==--> {% endcomment %}
                                 </div>
                                 <div class="swiper-slide">
                                     <!--== Start Product Item ==-->
