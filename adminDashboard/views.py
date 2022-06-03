@@ -34,7 +34,7 @@ def admin_logout(request):
 def dashboard(request):
     orders = Order.objects.all()
     users = User.objects.all()
-    payments = Payment.objects.all()
+    payments = Payment.objects.get('amount')
     best_sales = Payment.objects.all().order_by('amount')
 
     total_payments = 0
