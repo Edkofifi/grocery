@@ -34,12 +34,12 @@ def admin_logout(request):
 def dashboard(request):
     orders = Order.objects.all()
     users = User.objects.all()
-    payments = Payment.objects.get('amount')
+    payments = Payment.objects.all()
     best_sales = Payment.objects.all().order_by('amount')
 
     total_payments = 0
     for pay in payments:
-        total_payments += int(pay)
+        total_payments += int(pay.amount)
         return total_payments
 
     context = {'payments': payments,
