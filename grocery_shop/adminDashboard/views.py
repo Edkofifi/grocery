@@ -34,9 +34,18 @@ def admin_logout(request):
 def dashboard(request):
     orders = Order.objects.all()
     users = User.objects.all()
+    
+    # total_payments = 0
+    # for pay in payments:
+    #     total_payments += int(pay.amount)
+    #     return total_payments
+
+    
 
     context ={'orders':orders,
-              'users':users}
+              'users':users,
+              'payments': payments,
+                }
     return render(request, 'admin_dashboard/dashboard.html', context)
 
 def profile(request):
@@ -157,8 +166,17 @@ def statistics(request):
 
 def payments(request):
     payments = Payment.objects.all()
+    best_sales = Payment.objects.all().order_by('amount')
 
-    context = {'payments': payments}
+    # total_payments = 0
+    # for pay in payments:
+    #     total_payments += pay
+    #     return total_payments
+
+    context = {'payments': payments,
+                'best_sales' : best_sales,
+                }
+  
     return render(request, 'admin_dashboard/payments.html', context)
 
 def reports(request):
